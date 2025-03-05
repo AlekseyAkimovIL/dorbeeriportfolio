@@ -5,18 +5,18 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Dor Beeri</title>
-   <link rel="stylesheet" href="styles/main.css">
+   <link rel="stylesheet" href="/styles/main.css">
    <script src="/scripts/main.js" type="module" defer></script>
 </head>
 
 <body>
    <!-- header -->
    <header class="header">
-      <div class="header__container container">
+      <div class="header__inner container">
          <a class="header__logo logo" href="#" src="#" aria-label="home" title="home">
             <img class="logo__img" src="img/logo.svg" alt="dor beeri logo" width="45">
          </a>
-         <!-- <nav class="header__menu">
+         <nav class="header__menu">
             <ul class="header__menu-list">
                <li class="header__menu_item">
                   <a class="header__menu-link" href="#">
@@ -49,12 +49,11 @@
                   </a>
                </li>
             </ul>
-         </nav> -->
+         </nav>
          <h2 class="header__title">
             Dor Beeri
          </h2>
-
-         <button class="header__burger-button burger-button visible-mobile" type="button" aria-label="Open menu" title="Open menu" data-js-header-burger-button>
+         <button class="header__burger-button burger-button" type="button" aria-label="Open menu" title="Open menu" data-js-header-burger-button>
             <span class="burger-button__line"></span>
             <span class="burger-button__line"></span>
             <span class="burger-button__line"></span>
@@ -62,8 +61,9 @@
       </div>
    </header>
    <!-- /header -->
-   <!-- section main -->
+   <!-- main -->
    <main>
+      <!-- section mini portfolio -->
       <section class="miniport">
          <div class="miniport__inner container">
             <div class="miniport__content">
@@ -79,7 +79,9 @@
             </div>
          </div>
       </section>
+      <!-- /section mini portfolio -->
    </main>
+   <!-- main -->
 </body>
 
 </html>
