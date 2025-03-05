@@ -521,7 +521,7 @@ svg * {
    right: 0;
    top: 0;
    bottom: 0;
-   background-color: var(--color-light);
+   background-color: var(--color-accent);
    color: var(--color-white);
    display: flex;
    flex-direction: column;
@@ -537,6 +537,10 @@ svg * {
    font-weight: 700;
    color: #fff;
    text-transform: uppercase;
+}
+
+.header__menu-link:hover {
+   color: var(--color-light);
 }
 
 .header__title {
@@ -568,6 +572,8 @@ svg * {
    /* Increased the height */
    background-color: var(--color-white);
    border-radius: 1rem;
+   transition: transform 0.5s ease;
+   opacity: 0.5s ease;
 }
 
 .burger-button__line:nth-child(1) {
@@ -581,6 +587,63 @@ svg * {
 .burger-button__line:nth-child(3) {
    width: 20px;
 }
+
+
+.burger-button.active .burger-button__line:nth-child(1) {
+   transform: translateY(8px) rotate(45deg);
+   width: 40px;
+}
+
+.burger-button.active .burger-button__line:nth-child(2) {
+   opacity: 0;
+}
+
+.burger-button.active .burger-button__line:nth-child(3) {
+   transform: translateY(-8px) rotate(-45deg);
+   width: 40px;
+}
+
+.burger-button:not(.active) .burger-button__line {
+   transform: none;
+   opacity: 1;
+}
+
+.menu {
+   max-height: 0;
+   overflow: hidden;
+   transition: max-height 0.3s ease-in-out;
+}
+
+.menu--open {
+   max-height: 500px;
+}
+
+
+.menu {
+   max-height: 0;
+   overflow: hidden;
+   transition: max-height 0.3s ease-in-out;
+}
+
+.menu--open {
+   max-height: 500px;
+   /* Укажи нужную высоту */
+}
+
+.menu--open .burger-button__line:nth-child(1) {
+   transform: translateY(9px) rotate(45deg);
+   width: 40px;
+}
+
+.menu--open .burger-button__line:nth-child(2) {
+   opacity: 0;
+}
+
+.menu--open .burger-button__line:nth-child(3) {
+   transform: translateY(-9px) rotate(-45deg);
+   width: 40px;
+}
+
 
 /* miniport section */
 
