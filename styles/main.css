@@ -12,7 +12,7 @@
 a {
    display: inline-block;
    text-decoration: none;
-   color: #1f1f1f;
+   color: var(--color-dark-brown);
    transition: all 0.5s ease;
 }
 
@@ -116,15 +116,7 @@ button {
 }
 
 html {
-   /**
-   Пригодится в большинстве ситуаций
-   (когда, например, нужно будет "прижать" футер к низу сайта)
-  */
    height: 100%;
-   /**
-   Убираем скачок интерфейса по горизонтали
-   при появлении / исчезновении скроллбара
-  */
    scrollbar-gutter: stable;
 }
 
@@ -137,14 +129,7 @@ html,
 }
 
 body {
-   /**
-   Пригодится в большинстве ситуаций
-   (когда, например, нужно будет "прижать" футер к низу сайта)
-  */
    min-height: 100%;
-   /**
-   Унифицированный интерлиньяж
-  */
    line-height: 1.5;
    background-color: var(--color-black);
    font-family: 'Rubik', sans-serif;
@@ -168,34 +153,21 @@ label {
 
 /**
   Приводим к единому цвету svg-элементы
-  (за исключением тех, у которых уже указан
-  атрибут fill со значением 'none' или начинается с 'url')
  */
 :where([fill]:not([fill=none],
       [fill^=url])) {
    fill: currentColor;
 }
 
-/**
-  Приводим к единому цвету svg-элементы
-  (за исключением тех, у которых уже указан
-  атрибут stroke со значением 'none')
- */
 :where([stroke]:not([stroke=none],
       [stroke^=url])) {
    stroke: currentColor;
 }
 
-/**
-  Чиним баг задержки смены цвета при взаимодействии с svg-элементами
- */
 svg * {
    transition-property: fill, stroke;
 }
 
-/**
-  Приведение рамок таблиц в классический 'collapse' вид
- */
 :where(table) {
    border-collapse: collapse;
    border-color: currentColor;
@@ -216,215 +188,6 @@ svg * {
       scroll-behavior: auto !important;
    }
 }
-
-
-
-
-/*# sourceMappingURL=main.css.map */
-/**
-  Нормализация блочной модели
- */
-*,
-::before,
-::after {
-   box-sizing: border-box;
-}
-
-/**
-  Убираем внутренние отступы слева тегам списков,
-  у которых есть атрибут class
- */
-:where(ul, ol):where([class]) {
-   padding-left: 0;
-}
-
-/**
-  Убираем внешние отступы body и двум другим тегам,
-  у которых есть атрибут class
- */
-body,
-:where(blockquote, figure):where([class]) {
-   margin: 0;
-}
-
-/**
-  Убираем внешние отступы вертикали нужным тегам,
-  у которых есть атрибут class
- */
-:where(h1,
-   h2,
-   h3,
-   h4,
-   h5,
-   h6,
-   p,
-   ul,
-   ol,
-   dl):where([class]) {
-   margin-block: 0;
-}
-
-:where(dd[class]) {
-   margin-left: 0;
-}
-
-:where(fieldset[class]) {
-   margin-left: 0;
-   padding: 0;
-   border: none;
-}
-
-/**
-  Убираем стандартный маркер маркированному списку,
-  у которого есть атрибут class
- */
-:where(ul[class]) {
-   list-style: none;
-}
-
-:where(address[class]) {
-   font-style: normal;
-}
-
-/**
-  Обнуляем вертикальные внешние отступы параграфа,
-  объявляем локальную переменную для внешнего отступа вниз,
-  чтобы избежать взаимодействие с более сложным селектором
- */
-p {
-   --paragraphMarginBottom: 24px;
-
-   margin-block: 0;
-}
-
-/**
-  Внешний отступ вниз для параграфа без атрибута class,
-  который расположен не последним среди своих соседних элементов
- */
-p:where(:not([class]):not(:last-child)) {
-   margin-bottom: var(--paragraphMarginBottom);
-}
-
-
-/**
-  Упрощаем работу с изображениями и видео
- */
-img,
-video {
-   display: block;
-   max-width: 100%;
-   height: auto;
-}
-
-/**
-  Наследуем свойства шрифт для полей ввода
- */
-input,
-textarea,
-select,
-button {
-   font: inherit;
-}
-
-html {
-   /**
-    Пригодится в большинстве ситуаций
-    (когда, например, нужно будет "прижать" футер к низу сайта)
-   */
-   height: 100%;
-   /**
-    Убираем скачок интерфейса по горизонтали
-    при появлении / исчезновении скроллбара
-   */
-   scrollbar-gutter: stable;
-}
-
-/**
-  Плавный скролл
- */
-html,
-:has(:target) {
-   scroll-behavior: smooth;
-}
-
-body {
-   /**
-    Пригодится в большинстве ситуаций
-    (когда, например, нужно будет "прижать" футер к низу сайта)
-   */
-   min-height: 100%;
-   /**
-    Унифицированный интерлиньяж
-   */
-   line-height: 1.5;
-}
-
-/**
-  Нормализация высоты элемента ссылки при его инспектировании в DevTools
- */
-a:where([class]) {
-   display: inline-flex;
-}
-
-/**
-  Курсор-рука при наведении на элемент
- */
-button,
-label {
-   cursor: pointer;
-}
-
-/**
-  Приводим к единому цвету svg-элементы
-  (за исключением тех, у которых уже указан
-  атрибут fill со значением 'none' или начинается с 'url')
- */
-:where([fill]:not([fill="none"],
-      [fill^="url"])) {
-   fill: currentColor;
-}
-
-/**
-  Приводим к единому цвету svg-элементы
-  (за исключением тех, у которых уже указан
-  атрибут stroke со значением 'none')
- */
-:where([stroke]:not([stroke="none"],
-      [stroke^="url"])) {
-   stroke: currentColor;
-}
-
-/**
-  Чиним баг задержки смены цвета при взаимодействии с svg-элементами
- */
-svg * {
-   transition-property: fill, stroke;
-}
-
-/**
-  Приведение рамок таблиц в классический 'collapse' вид
- */
-:where(table) {
-   border-collapse: collapse;
-   border-color: currentColor;
-}
-
-/**
-  Удаляем все анимации и переходы для людей,
-  которые предпочитают их не использовать
- */
-@media (prefers-reduced-motion: reduce) {
-
-   *,
-   ::before,
-   ::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
-   }
-}
-
 
 /* Шрифты для главной страницы */
 
@@ -476,14 +239,23 @@ svg * {
    font-display: swap;
 }
 
+@font-face {
+   font-family: 'Inter 18pt';
+   src: url('Inter18pt-Regular.woff2') format('woff2');
+   font-weight: normal;
+   font-style: normal;
+   font-display: swap;
+}
+
+
 /* variables */
 :root {
-   --color-primary: #402E30;
-   --color-secondary: #612F31;
-   --color-dark: #3D1F1F;
-   --color-light: #987C7E;
+   --color-dark-brown: #402E30;
+   --color-burgundy-red: #612F31;
+   --color-dark-maroon: #3D1F1F;
+   --color-taupe: #987C7E;
+   --color-deep-red: #662D2C;
    --color-white: #FFFFFF;
-   --color-accent: #662D2C;
    --color-black: #000;
 }
 
@@ -513,6 +285,11 @@ svg * {
 
 .header__menu {
    position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   z-index: 10;
+   /* Убедитесь, что оно не выходит за пределы экрана */
 }
 
 .header__menu-list {
@@ -521,7 +298,7 @@ svg * {
    right: 0;
    top: 0;
    bottom: 0;
-   background-color: var(--color-accent);
+   background-color: var(--color-deep-red);
    color: var(--color-white);
    display: flex;
    flex-direction: column;
@@ -530,32 +307,35 @@ svg * {
    align-items: center;
    transform: translateY(-100%);
    transition: transform 0.9s ease;
+   z-index: 10;
 }
 
+
+
 .header__menu-link {
-   font-size: 27px;
-   font-weight: 700;
+   font-size: 17px;
+   font-weight: 400;
    color: #fff;
    text-transform: uppercase;
 }
 
 .header__menu-link:hover {
-   color: var(--color-light);
+   color: var(--color-taupe);
 }
 
 .header__title {
    color: var(--color-white);
-   font-size: 24px;
+   font-size: 17px;
+   font-weight: 400;
    text-transform: uppercase;
    letter-spacing: 0.1rem;
 }
 
-/* burger button */
 .burger-button {
    width: 40px;
    height: 40px;
    flex-direction: column;
-   align-items: flex-end;
+   align-items: center;
    justify-content: space-between;
    padding: 10px 5px;
    color: var(--color-white);
@@ -563,35 +343,21 @@ svg * {
    display: inline-flex;
    background-color: transparent;
    position: relative;
-   z-index: 1;
+   z-index: 10;
 }
 
 .burger-button__line {
-   width: 100%;
+   width: 40px;
    height: 3px;
-   /* Increased the height */
    background-color: var(--color-white);
    border-radius: 1rem;
-   transition: transform 0.5s ease;
-   opacity: 0.5s ease;
+   transition: transform 0.4s ease, opacity 0.4s ease;
+   opacity: 1;
 }
 
-.burger-button__line:nth-child(1) {
-   width: 40px;
-}
-
-.burger-button__line:nth-child(2) {
-   width: 30px;
-}
-
-.burger-button__line:nth-child(3) {
-   width: 20px;
-}
-
-
+/* Когда кнопка активирована */
 .burger-button.active .burger-button__line:nth-child(1) {
    transform: translateY(8px) rotate(45deg);
-   width: 40px;
 }
 
 .burger-button.active .burger-button__line:nth-child(2) {
@@ -600,11 +366,11 @@ svg * {
 
 .burger-button.active .burger-button__line:nth-child(3) {
    transform: translateY(-8px) rotate(-45deg);
-   width: 40px;
 }
 
+/* Возврат к исходной форме при неактивном состоянии */
 .burger-button:not(.active) .burger-button__line {
-   transform: none;
+   transform: translateY(0) rotate(0);
    opacity: 1;
 }
 
@@ -618,21 +384,8 @@ svg * {
    max-height: 500px;
 }
 
-
-.menu {
-   max-height: 0;
-   overflow: hidden;
-   transition: max-height 0.3s ease-in-out;
-}
-
-.menu--open {
-   max-height: 500px;
-   /* Укажи нужную высоту */
-}
-
 .menu--open .burger-button__line:nth-child(1) {
    transform: translateY(9px) rotate(45deg);
-   width: 40px;
 }
 
 .menu--open .burger-button__line:nth-child(2) {
@@ -641,47 +394,97 @@ svg * {
 
 .menu--open .burger-button__line:nth-child(3) {
    transform: translateY(-9px) rotate(-45deg);
-   width: 40px;
 }
 
 
-/* miniport section */
+/* swiper container  */
 
-.miniport {
+.portfolio {
    padding-top: 150px;
-   gap: 20px;
 }
 
-.miniport__inner {
-   display: flex;
+
+.swiper {
+   width: 1210px;
 }
 
-.miniport__content {
-   width: 450px;
-   height: 300px;
-   padding: 50px 50px;
+.slider-wrapper {
+   width: 100%;
+   margin: 0 auto;
+   overflow: hidden
 }
 
-.miniport__title,
-.miniport__text {
-   color: var(--color-white);
-}
-
-.miniport__images {
-   width: 450px;
-   background-image: url(../img/miniport-img.png);
+/* .swiper-button-next,
+.swiper-button-prev {
+   background-color: #fff;
+   border-radius: 100%;
+   background-position: center;
    background-repeat: no-repeat;
-   background-position: center center;
-   background-size: cover;
 }
 
+.swiper-button-next::after,
+.swiper-button-prev::after {
+   display: none;
+}
+
+.swiper-button-prev {
+   background-image: url(/img/icons/back.svg);
+}
+
+.swiper-button-next {
+   background-image: url(/img/icons/next.svg);
+} */
+
+.card {
+   font-family: 'Inter18pt-Regular', sans-serif;
+   padding: 30px;
+   color: var(--color-white);
+   display: flex !important;
+   align-items: center
+}
+
+.card__content {
+   width: 100%;
+   max-width: 452px;
+}
+
+.card__content-title {
+   font-weight: 400;
+   font-size: 40px;
+}
+
+.card__content-subtitle {
+   font-weight: 400;
+   font-size: 20px;
+   margin-top: 25px;
+   position: relative;
+   line-height: 25px;
+   padding-left: 10px
+}
+
+.card__content-subtitle::before {
+   content: "";
+   position: absolute;
+   left: 0;
+   top: 0;
+   width: 5px;
+   height: 25px;
+   background-color: var(--color-deep-red);
+}
+
+.card__content-text {
+   margin-top: 20px;
+   font-size: 16px;
+   font-weight: 400;
+}
+
+.card__img {}
 
 
 /* Медиа запросы */
 
 @media (max-width: 1920px) {
    .container {}
-
 }
 
 @media (max-width: 768px) {
@@ -693,7 +496,6 @@ svg * {
 
    .header__menu {}
 
-
    .button {}
 
    .header__button {}
@@ -701,7 +503,6 @@ svg * {
    .header__social-list {}
 
    .burger-button {}
-
 }
 
 @media (max-width: 320px) {
