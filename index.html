@@ -6,7 +6,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Dor Beeri</title>
    <link rel="stylesheet" href="styles/main.css">
-   <script src="scripts/main.js" type="module" defer></script>
+   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 </head>
 
 <body>
@@ -25,17 +25,7 @@
                </li>
                <li class="header__menu_item">
                   <a class="header__menu-link" href="#">
-                     Animations
-                  </a>
-               </li>
-               <li class="header__menu_item">
-                  <a class="header__menu-link" href="#">
-                     Graphic Design
-                  </a>
-               </li>
-               <li class="header__menu_item">
-                  <a class="header__menu-link" href="#">
-                     Reviews
+                     Portfolio
                   </a>
                </li>
                <li class="header__menu_item">
@@ -63,25 +53,73 @@
    <!-- /header -->
    <!-- main -->
    <main>
-      <!-- section mini portfolio -->
-      <section class="miniport">
-         <div class="miniport__inner container">
-            <div class="miniport__content">
-               <h2 class="miniport__title">
-                  Title
-               </h2>
-               <div class="miniport__text">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel error quam non labore id, hic excepturi enim. Voluptatibus reiciendis voluptatem omnis adipisci expedita voluptatum in, nulla excepturi incidunt ipsam ullam.
+      <section class="portfolio">
+         <div class="portfolio__inner container">
+            <!-- Slider main container -->
+            <div class="swiper">
+               <!-- Additional required wrapper -->
+               <div class="swiper-wrapper">
+                  <!-- Slides -->
+                  <div class="swiper-slide card">
+                     <div class="card__content">
+                        <h2 class="card__content-title">
+                           Barber's Shop Transformation
+                        </h2>
+                        <h3 class="card__content-subtitle">
+                           Brand Identity Design
+                        </h3>
+                        <p class="card__content-text">
+                           Fresh new look for the barber shop.<br> New logo, business card, and price list with a modern touch
+                        </p>
+                     </div>
+                     <div class="card__img">
+                        <img src="/img/swiper/barbershop-swiper.png" alt="">
+                     </div>
+                  </div>
+                  <div class="swiper-slide card">
+                     <div class="card__content">
+                        <h2 class="card__content-title">
+                           Barber's Shop Transformation
+                        </h2>
+                        <h3 class="card__content-subtitle">
+                           Brand Identity Design
+                        </h3>
+                        <p class="card__content-text">
+                           Fresh new look for the barber shop.<br> New logo, business card, and price list with a modern touch
+                        </p>
+                     </div>
+                     <div class="card__img">
+                        <img src="/img/swiper/barbershop-swiper.png" alt="">
+                     </div>
+                  </div>
+                  <div class="swiper-slide card">
+                     <div class="card__content">
+                        <h2 class="card__content-title">
+                           Barber's Shop Transformation
+                        </h2>
+                        <h3 class="card__content-subtitle">
+                           Brand Identity Design
+                        </h3>
+                        <p class="card__content-text">
+                           Fresh new look for the barber shop.<br> New logo, business card, and price list with a modern touch
+                        </p>
+                     </div>
+                     <div class="card__img">
+                        <img src="/img/swiper/barbershop-swiper.png" alt="">
+                     </div>
+                  </div>
                </div>
-            </div>
-            <div class="miniport__images">
-
+               <!-- If we need navigation buttons -->
+               <div class="swiper-button-prev"></div>
+               <div class="swiper-button-next"></div>
             </div>
          </div>
       </section>
-      <!-- /section mini portfolio -->
    </main>
    <!-- main -->
+   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+   <script src="scripts/main.js" type="module" defer></script>
+   <script src="scripts/slider.js"></script>
 </body>
 
 </html>
