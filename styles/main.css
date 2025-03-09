@@ -132,7 +132,7 @@ body {
    background-color: var(--color-black);
    font-family: 'Rubik', sans-serif;
    font-weight: 500;
-   background-image: url('..img/main-bg.png');
+   background-image: url('img/main-bg.png');
    background-repeat: no-repeat;
    background-size: cover;
    background-position: center center;
@@ -442,11 +442,11 @@ main {
 }
 
 .swiper-button-prev {
-   background-image: url('..img/icons/back.svg');
+   background-image: url('img/icons/back.svg');
 }
 
 .swiper-button-next {
-   background-image: url('..img/icons/next.svg');
+   background-image: url('img/icons/next.svg');
 }
 
 .card {
