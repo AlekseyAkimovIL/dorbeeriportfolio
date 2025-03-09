@@ -117,7 +117,6 @@ button {
 
 html {
    height: 100%;
-   scrollbar-gutter: stable;
 }
 
 /**
@@ -129,11 +128,20 @@ html,
 }
 
 body {
-   min-height: 100%;
+   height: 100%;
    line-height: 1.5;
    background-color: var(--color-black);
    font-family: 'Rubik', sans-serif;
    font-weight: 500;
+   background-image: url(/img/main-bg.png);
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-position: center center;
+}
+
+body {
+   padding-top: 0;
+   /* Убираем верхний отступ, чтобы фон занимал всю страницу */
 }
 
 /**
@@ -257,6 +265,17 @@ svg * {
    --color-deep-red: #662D2C;
    --color-white: #FFFFFF;
    --color-black: #000;
+   --color-gray: #191919;
+}
+
+.wrapper {
+   min-height: 100%;
+   display: flex;
+   flex-direction: column;
+}
+
+main {
+   flex-grow: 1;
 }
 
 /* section header */
@@ -310,11 +329,9 @@ svg * {
    z-index: 10;
 }
 
-
-
 .header__menu-link {
    font-size: 17px;
-   font-weight: 400;
+   font-weight: bold;
    color: #fff;
    text-transform: uppercase;
 }
@@ -400,12 +417,11 @@ svg * {
 /* swiper container  */
 
 .portfolio {
-   padding-top: 150px;
+   padding-top: 324px;
 }
 
-
 .swiper {
-   width: 1210px;
+   width: 970px;
 }
 
 .slider-wrapper {
@@ -414,9 +430,8 @@ svg * {
    overflow: hidden
 }
 
-/* .swiper-button-next,
+.swiper-button-next,
 .swiper-button-prev {
-   background-color: #fff;
    border-radius: 100%;
    background-position: center;
    background-repeat: no-repeat;
@@ -433,7 +448,7 @@ svg * {
 
 .swiper-button-next {
    background-image: url(/img/icons/next.svg);
-} */
+}
 
 .card {
    font-family: 'Inter18pt-Regular', sans-serif;
@@ -445,12 +460,13 @@ svg * {
 
 .card__content {
    width: 100%;
-   max-width: 452px;
+   max-width: 497px;
 }
 
 .card__content-title {
    font-weight: 400;
    font-size: 40px;
+   line-height: 45px;
 }
 
 .card__content-subtitle {
@@ -478,37 +494,37 @@ svg * {
    font-weight: 400;
 }
 
-.card__img {}
+.card__img img {
+   width: 441px;
+}
 
+.footer {
+   padding: 30px 0px;
+   background-color: var(--color-gray);
+}
+
+.footer__inner {
+   text-align: center;
+}
+
+.footer__text {
+   font-family: "Rubik", sans-serif;
+   color: var(--color-white);
+   font-size: 17px;
+   letter-spacing: 0.07em;
+   font-weight: 500;
+}
 
 /* Медиа запросы */
-
-@media (max-width: 1920px) {
-   .container {}
-}
 
 @media (max-width: 768px) {
    .container {
       max-width: 690px;
    }
-
-   .logo__img {}
-
-   .header__menu {}
-
-   .button {}
-
-   .header__button {}
-
-   .header__social-list {}
-
-   .burger-button {}
 }
 
 @media (max-width: 320px) {
    .container {
       width: 290px;
    }
-
-   .header__contact {}
 }
