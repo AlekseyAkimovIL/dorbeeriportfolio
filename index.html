@@ -1,125 +1,530 @@
-<!DOCTYPE html>
-<html lang="en">
+@charset "UTF-8";
 
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Dor Beeri</title>
-   <link rel="stylesheet" href="styles/main.css">
-   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-</head>
+/**
+  Нормализация блочной модели
+ */
+*,
+::before,
+::after {
+   box-sizing: border-box;
+}
 
-<body>
-   <!-- header -->
-   <header class="header">
-      <div class="header__inner container">
-         <a class="header__logo logo" href="#" src="#" aria-label="home" title="home">
-            <img class="logo__img" src="img/logo.svg" alt="dor beeri logo" width="45">
-         </a>
-         <nav class="header__menu">
-            <ul class="header__menu-list">
-               <li class="header__menu_item">
-                  <a class="header__menu-link" href="#">
-                     Home
-                  </a>
-               </li>
-               <li class="header__menu_item">
-                  <a class="header__menu-link" href="#">
-                     Portfolio
-                  </a>
-               </li>
-               <li class="header__menu_item">
-                  <a class="header__menu-link" href="#">
-                     About
-                  </a>
-               </li>
-               <li class="header__menu_item">
-                  <a class="header__menu-link" href="#">
-                     Disclamer
-                  </a>
-               </li>
-            </ul>
-         </nav>
-         <h2 class="header__title">
-            Dor Beeri
-         </h2>
-         <button class="header__burger-button burger-button" type="button" aria-label="Open menu" title="Open menu" data-js-header-burger-button>
-            <span class="burger-button__line"></span>
-            <span class="burger-button__line"></span>
-            <span class="burger-button__line"></span>
-         </button>
-      </div>
-   </header>
-   <!-- /header -->
-   <!-- main -->
-   <main>
-      <section class="portfolio">
-         <div class="portfolio__inner container">
-            <!-- Slider main container -->
-            <div class="swiper">
-               <!-- Additional required wrapper -->
-               <div class="swiper-wrapper">
-                  <!-- Slides -->
-                  <div class="swiper-slide card">
-                     <div class="card__content">
-                        <h2 class="card__content-title">
-                           Barber's Shop Transformation
-                        </h2>
-                        <h3 class="card__content-subtitle">
-                           Brand Identity Design
-                        </h3>
-                        <p class="card__content-text">
-                           Fresh new look for the barber shop.<br> New logo, business card, and price list with a modern touch
-                        </p>
-                     </div>
-                     <div class="card__img">
-                        <img src="img/swiper/barbershop-swiper.png" alt="">
-                     </div>
-                  </div>
-                  <div class="swiper-slide card">
-                     <div class="card__content">
-                        <h2 class="card__content-title">
-                           Barber's Shop Transformation
-                        </h2>
-                        <h3 class="card__content-subtitle">
-                           Brand Identity Design
-                        </h3>
-                        <p class="card__content-text">
-                           Fresh new look for the barber shop.<br> New logo, business card, and price list with a modern touch
-                        </p>
-                     </div>
-                     <div class="card__img">
-                        <img src="img/swiper/barbershop-swiper.png" alt="">
-                     </div>
-                  </div>
-                  <div class="swiper-slide card">
-                     <div class="card__content">
-                        <h2 class="card__content-title">
-                           Barber's Shop Transformation
-                        </h2>
-                        <h3 class="card__content-subtitle">
-                           Brand Identity Design
-                        </h3>
-                        <p class="card__content-text">
-                           Fresh new look for the barber shop.<br> New logo, business card, and price list with a modern touch
-                        </p>
-                     </div>
-                     <div class="card__img">
-                        <img src="img/swiper/barbershop-swiper.png" alt="">
-                     </div>
-                  </div>
-               </div>
-               <!-- If we need navigation buttons -->
-               <div class="swiper-button-prev"></div>
-               <div class="swiper-button-next"></div>
-            </div>
-         </div>
-      </section>
-   </main>
-   <!-- main -->
-   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-   <script src="scripts/main.js" type="module" defer></script>
-   <script src="scripts/slider.js"></script>
-</body>
+a {
+   display: inline-block;
+   text-decoration: none;
+   color: var(--color-dark-brown);
+   transition: all 0.5s ease;
+}
 
-</html>
+button {
+   transition: all 0.5s ease;
+}
+
+/**
+  Убираем внутренние отступы слева тегам списков,
+  у которых есть атрибут class
+ */
+:where(ul, ol):where([class]) {
+   padding-left: 0;
+}
+
+/**
+  Убираем внешние отступы body и двум другим тегам,
+  у которых есть атрибут class
+ */
+body,
+:where(blockquote, figure):where([class]) {
+   margin: 0;
+}
+
+/**
+  Убираем внешние отступы вертикали нужным тегам,
+  у которых есть атрибут class
+ */
+:where(h1,
+   h2,
+   h3,
+   h4,
+   h5,
+   h6,
+   p,
+   ul,
+   ol,
+   dl):where([class]) {
+   margin-block: 0;
+}
+
+:where(dd[class]) {
+   margin-left: 0;
+}
+
+:where(fieldset[class]) {
+   margin-left: 0;
+   padding: 0;
+   border: none;
+}
+
+/**
+  Убираем стандартный маркер маркированному списку,
+  у которого есть атрибут class
+ */
+:where(ul[class]) {
+   list-style: none;
+}
+
+:where(address[class]) {
+   font-style: normal;
+}
+
+/**
+  Обнуляем вертикальные внешние отступы параграфа,
+  объявляем локальную переменную для внешнего отступа вниз,
+  чтобы избежать взаимодействие с более сложным селектором
+ */
+p {
+   --paragraphMarginBottom: 24px;
+   margin-block: 0;
+}
+
+/**
+  Внешний отступ вниз для параграфа без атрибута class,
+  который расположен не последним среди своих соседних элементов
+ */
+p:where(:not([class]):not(:last-child)) {
+   margin-bottom: var(--paragraphMarginBottom);
+}
+
+/**
+  Упрощаем работу с изображениями и видео
+ */
+img,
+video {
+   display: block;
+   max-width: 100%;
+   height: auto;
+   object-fit: contain;
+}
+
+/**
+  Наследуем свойства шрифт для полей ввода
+ */
+input,
+textarea,
+select,
+button {
+   font: inherit;
+}
+
+html {
+   height: 100%;
+}
+
+/**
+  Плавный скролл
+ */
+html,
+:has(:target) {
+   scroll-behavior: smooth;
+}
+
+body {
+   height: 100%;
+   line-height: 1.5;
+   background-color: var(--color-black);
+   font-family: 'Rubik', sans-serif;
+   font-weight: 500;
+   background-image: url(/img/main-bg.png);
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-position: center center;
+}
+
+body {
+   padding-top: 0;
+   /* Убираем верхний отступ, чтобы фон занимал всю страницу */
+}
+
+/**
+  Нормализация высоты элемента ссылки при его инспектировании в DevTools
+ */
+a:where([class]) {
+   display: inline-flex;
+}
+
+/**
+  Курсор-рука при наведении на элемент
+ */
+button,
+label {
+   cursor: pointer;
+}
+
+/**
+  Приводим к единому цвету svg-элементы
+ */
+:where([fill]:not([fill=none],
+      [fill^=url])) {
+   fill: currentColor;
+}
+
+:where([stroke]:not([stroke=none],
+      [stroke^=url])) {
+   stroke: currentColor;
+}
+
+svg * {
+   transition-property: fill, stroke;
+}
+
+:where(table) {
+   border-collapse: collapse;
+   border-color: currentColor;
+}
+
+/**
+  Удаляем все анимации и переходы для людей,
+  которые предпочитают их не использовать
+ */
+@media (prefers-reduced-motion: reduce) {
+
+   *,
+   ::before,
+   ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+   }
+}
+
+/* Шрифты для главной страницы */
+
+@font-face {
+   font-family: 'Rubik';
+   src: url('Rubik-Medium.woff2') format('woff2');
+   font-weight: 500;
+   font-style: normal;
+   font-display: swap;
+}
+
+@font-face {
+   font-family: 'Rubik';
+   src: url('Rubik-Light.woff2') format('woff2');
+   font-weight: 300;
+   font-style: normal;
+   font-display: swap;
+}
+
+@font-face {
+   font-family: 'Rubik';
+   src: url('Rubik-Bold.woff2') format('woff2');
+   font-weight: bold;
+   font-style: normal;
+   font-display: swap;
+}
+
+@font-face {
+   font-family: 'Rubik';
+   src: url('Rubik-Regular.woff2') format('woff2');
+   font-weight: normal;
+   font-style: normal;
+   font-display: swap;
+}
+
+@font-face {
+   font-family: 'Rubik';
+   src: url('Rubik-SemiBold.woff2') format('woff2');
+   font-weight: 600;
+   font-style: normal;
+   font-display: swap;
+}
+
+@font-face {
+   font-family: 'Rubik';
+   src: url('Rubik-Black.woff2') format('woff2');
+   font-weight: 900;
+   font-style: normal;
+   font-display: swap;
+}
+
+@font-face {
+   font-family: 'Inter 18pt';
+   src: url('Inter18pt-Regular.woff2') format('woff2');
+   font-weight: normal;
+   font-style: normal;
+   font-display: swap;
+}
+
+
+/* variables */
+:root {
+   --color-dark-brown: #402E30;
+   --color-burgundy-red: #612F31;
+   --color-dark-maroon: #3D1F1F;
+   --color-taupe: #987C7E;
+   --color-deep-red: #662D2C;
+   --color-white: #FFFFFF;
+   --color-black: #000;
+   --color-gray: #191919;
+}
+
+.wrapper {
+   min-height: 100%;
+   display: flex;
+   flex-direction: column;
+}
+
+main {
+   flex-grow: 1;
+}
+
+/* section header */
+
+.container {
+   width: 100%;
+   max-width: 1710px;
+   margin: 0 auto;
+   padding: 0 15px;
+}
+
+.header__inner {
+   padding-top: 20px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.header__logo {
+   z-index: 100;
+}
+
+.header__menu.menu--open .header__menu-list {
+   transform: translateY(0%);
+}
+
+.header__menu {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   z-index: 10;
+   /* Убедитесь, что оно не выходит за пределы экрана */
+}
+
+.header__menu-list {
+   position: fixed;
+   left: 0;
+   right: 0;
+   top: 0;
+   bottom: 0;
+   background-color: var(--color-deep-red);
+   color: var(--color-white);
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   gap: 50px;
+   align-items: center;
+   transform: translateY(-100%);
+   transition: transform 0.9s ease;
+   z-index: 10;
+}
+
+.header__menu-link {
+   font-size: 17px;
+   font-weight: bold;
+   color: #fff;
+   text-transform: uppercase;
+}
+
+.header__menu-link:hover {
+   color: var(--color-taupe);
+}
+
+.header__title {
+   color: var(--color-white);
+   font-size: 17px;
+   font-weight: 400;
+   text-transform: uppercase;
+   letter-spacing: 0.1rem;
+}
+
+.burger-button {
+   width: 40px;
+   height: 40px;
+   flex-direction: column;
+   align-items: center;
+   justify-content: space-between;
+   padding: 10px 5px;
+   color: var(--color-white);
+   border: none;
+   display: inline-flex;
+   background-color: transparent;
+   position: relative;
+   z-index: 10;
+}
+
+.burger-button__line {
+   width: 40px;
+   height: 3px;
+   background-color: var(--color-white);
+   border-radius: 1rem;
+   transition: transform 0.4s ease, opacity 0.4s ease;
+   opacity: 1;
+}
+
+/* Когда кнопка активирована */
+.burger-button.active .burger-button__line:nth-child(1) {
+   transform: translateY(8px) rotate(45deg);
+}
+
+.burger-button.active .burger-button__line:nth-child(2) {
+   opacity: 0;
+}
+
+.burger-button.active .burger-button__line:nth-child(3) {
+   transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Возврат к исходной форме при неактивном состоянии */
+.burger-button:not(.active) .burger-button__line {
+   transform: translateY(0) rotate(0);
+   opacity: 1;
+}
+
+.menu {
+   max-height: 0;
+   overflow: hidden;
+   transition: max-height 0.3s ease-in-out;
+}
+
+.menu--open {
+   max-height: 500px;
+}
+
+.menu--open .burger-button__line:nth-child(1) {
+   transform: translateY(9px) rotate(45deg);
+}
+
+.menu--open .burger-button__line:nth-child(2) {
+   opacity: 0;
+}
+
+.menu--open .burger-button__line:nth-child(3) {
+   transform: translateY(-9px) rotate(-45deg);
+}
+
+
+/* swiper container  */
+
+.portfolio {
+   padding-top: 324px;
+}
+
+.swiper {
+   width: 970px;
+}
+
+.slider-wrapper {
+   width: 100%;
+   margin: 0 auto;
+   overflow: hidden
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+   border-radius: 100%;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+   display: none;
+}
+
+.swiper-button-prev {
+   background-image: url(/img/icons/back.svg);
+}
+
+.swiper-button-next {
+   background-image: url(/img/icons/next.svg);
+}
+
+.card {
+   font-family: 'Inter18pt-Regular', sans-serif;
+   padding: 30px;
+   color: var(--color-white);
+   display: flex !important;
+   align-items: center
+}
+
+.card__content {
+   width: 100%;
+   max-width: 497px;
+}
+
+.card__content-title {
+   font-weight: 400;
+   font-size: 40px;
+   line-height: 45px;
+}
+
+.card__content-subtitle {
+   font-weight: 400;
+   font-size: 20px;
+   margin-top: 25px;
+   position: relative;
+   line-height: 25px;
+   padding-left: 10px
+}
+
+.card__content-subtitle::before {
+   content: "";
+   position: absolute;
+   left: 0;
+   top: 0;
+   width: 5px;
+   height: 25px;
+   background-color: var(--color-deep-red);
+}
+
+.card__content-text {
+   margin-top: 20px;
+   font-size: 16px;
+   font-weight: 400;
+}
+
+.card__img img {
+   width: 441px;
+}
+
+.footer {
+   padding: 30px 0px;
+   background-color: var(--color-gray);
+}
+
+.footer__inner {
+   text-align: center;
+}
+
+.footer__text {
+   font-family: "Rubik", sans-serif;
+   color: var(--color-white);
+   font-size: 17px;
+   letter-spacing: 0.07em;
+   font-weight: 500;
+}
+
+/* Медиа запросы */
+
+@media (max-width: 768px) {
+   .container {
+      max-width: 690px;
+   }
+}
+
+@media (max-width: 320px) {
+   .container {
+      width: 290px;
+   }
+}
