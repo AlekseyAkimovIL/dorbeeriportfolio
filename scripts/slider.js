@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
    let mySwiper = new Swiper(slider, {
       slidesPerView: 1,
       loop: true,
+      speed: 1200,
       navigation: {
          nextEl: '.swiper-button-next',
          prevEl: '.swiper-button-prev',
